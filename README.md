@@ -12,11 +12,14 @@ The project consists of building an internal social network for Groupomania empl
  
 Technologies used:
 
-Backend: NodeJs, Express, Mysql, Sequelize
-Frontend: VueJs, VueX, Vuetify
-Installation 
 
-To use the app:
+Backend: NodeJs, Express, Mysql, Sequelize
+
+Frontend: VueJs, VueX, Vuetify
+
+
+Installation:
+
 
 Backend:
 Open backend folder in terminal
