@@ -9,15 +9,20 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        onDelete: 'CASCADE',
+        ONUPDATE: 'CASCADE'  
+
       },
-      userId: {
+      UserId: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {
           model: 'Users',
-          key: 'id'
-        },     
+          key: 'id',
+        },  
+        onDelete: 'CASCADE',
+        ONUPDATE: 'CASCADE'   
         
       },
       message: {

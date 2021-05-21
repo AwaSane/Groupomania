@@ -27,7 +27,7 @@
             <div class="col-12">
               
 
-            <button class="btn btn-primary btn-color" v-on:click.prevent="login">Envoyer</button>
+            <button class="btn btn-primary btn-color" v-on:click.prevent="login">Se connecter</button>
             </div>
               
               </div>

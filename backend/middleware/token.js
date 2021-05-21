@@ -1,7 +1,5 @@
 const JWT = require("jsonwebtoken");
 const config = require("../config/config");
-const dotenv = require('dotenv').config();
-console.log(dotenv.parsed)
 
 function issueJWT(user) {
   const id = user.id;
@@ -10,7 +8,7 @@ function issueJWT(user) {
     sub: id,
     iat: Date.now(),
   };
-  const signedToken = JWT.sign(payload, process.env.JWT_KEY, { expiresIn: expiresIn });
+  const signedToken = JWT.sign(payload, "RANDOM_TOKEN_SECRET", { expiresIn: expiresIn });
   return {
     token: "Bearer " + signedToken,
     expires: expiresIn,
@@ -18,7 +16,7 @@ function issueJWT(user) {
 }
 function getUserId(req) {
   const token = req.headers.authorization.split(" ")[1];
-  const decodedToken = JWT.verify(token, process.env.JWT_KEY); 
+  const decodedToken = JWT.verify(token, "RANDOM_TOKEN_SECRET"); 
   const userId = decodedToken.sub;
   return userId;
 }

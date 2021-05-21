@@ -70,16 +70,7 @@ exports.login = async (req, res) => {
     return res.status(500).send({ error: "Erreur serveur" });
   }
 };
-exports.getProfil = async (req, res) => {
-  try {
-    const user = await db.User.findOne({
-      where: { id: req.params.id },
-    });
-    res.status(200).send(user);
-  } catch (error) {
-    return res.status(500).send({ error: "Erreur serveur" });
-  }
-};
+
 exports.getAllUsers = async (req, res) => {
   try {
     const users = await db.User.findAll({
@@ -95,6 +86,17 @@ exports.getAllUsers = async (req, res) => {
     return res.status(500).send({ error: "Erreur serveur" });
   }
 };
+exports.getProfil = async (req, res) => {
+  try {
+    const user = await db.User.findOne({
+      where: { id: req.params.id },
+    });
+    res.status(200).send(user);
+  } catch (error) {
+    return res.status(500).send({ error: "Erreur serveur" });
+  }
+};
+
 exports.updateProfil = async (req, res) => {
   const id = req.params.id;
   try {
@@ -115,7 +117,7 @@ exports.updateProfil = async (req, res) => {
     } else {
       res
         .status(400)
-        .json({ messageRetour: "Vous n'avez pas les droits requis" });
+        .json({ messageRetour: "" });
     }
   } catch (error) {
     return res.status(500).send({ error: "Erreur serveur" });
@@ -125,8 +127,21 @@ exports.updateProfil = async (req, res) => {
 // FONCTION A DEVELOPPER
 exports.deleteProfil = async (req, res) => {
   try {
-    
+    const id = req.params.id;
+    const user = await db.User.findOne({ where: { id: id } });
+    if (user.photo !== null) {
+      const filename = user.photo.split("/images")[1];
+      fs.unlink(`images/${filename}`, () => {
+       
+        db.User.destroy({ where: { id: id } });
+        res.status(200).json({ messageRetour: "utilisateur supprimé" });
+      });
+    } else {
+      db.User.destroy({ where: { id: id } });
+      res.status(200).json({ messageRetour: "utilisateur supprimé" });
+    }
   } catch (error) {
     return res.status(500).send({ error: "Erreur serveur" });
   }
 };
+

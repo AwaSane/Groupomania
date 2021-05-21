@@ -103,29 +103,7 @@ exports.getOnePost = async (req, res) => {
   }
 };
 
-exports.deletePost = async (req, res) => {
-  try {
-    const userId = token.getUserId(req);
-    const Admin = await db.User.findOne({ where: { id: userId } });
-    const post = await db.Post.findOne({ where: { id: req.params.id } });
-    if (userId === post.UserId || Admin.admin === true) {
-      if (post.imageUrl) {
-        const filename = post.imageUrl.split("/images")[1];
-        fs.unlink(`images/${filename}`, () => {
-          db.Post.destroy({ where: { id: post.id } });
-          res.status(200).json({ message: "Post supprimé" });
-        });
-      } else {
-        db.Post.destroy({ where: { id: post.id } }, { truncate: true });
-        res.status(200).json({ message: "Post supprimé" });
-      }
-    } else {
-      res.status(400).json({ message: "Vous n'avez pas les droits requis" });
-    }
-  } catch (error) {
-    return res.status(500).send({ error: "Erreur serveur" });
-  }
-};
+
 
 exports.updatePost = async (req, res) => {
   try {
@@ -164,7 +142,29 @@ exports.updatePost = async (req, res) => {
   }
 };
 
-
+exports.deletePost = async (req, res) => {
+  try {
+    const userId = token.getUserId(req);
+    const Admin = await db.User.findOne({ where: { id: userId } });
+    const post = await db.Post.findOne({ where: { id: req.params.id } });
+    if (userId === post.UserId || Admin.admin === true) {
+      if (post.imageUrl) {
+        const filename = post.imageUrl.split("/images")[1];
+        fs.unlink(`images/${filename}`, () => {
+          db.Post.destroy({ where: { id: post.id } });
+          res.status(200).json({ message: "Post supprimé" });
+        });
+      } else {
+        db.Post.destroy({ where: { id: post.id } }, { truncate: true });
+        res.status(200).json({ message: "Post supprimé" });
+      }
+    } else {
+      res.status(400).json({ message: "Vous n'avez pas les droits requis" });
+    }
+  } catch (error) {
+    return res.status(500).send({ error: "Erreur serveur" });
+  }
+};
 exports.addComment = async (req, res) => {
   try {
     const comment = req.body.commentMessage;
@@ -193,7 +193,7 @@ exports.deleteComment = async (req, res) => {
       db.Comment.destroy({ where: { id: req.params.id } }, { truncate: true });
       res.status(200).json({ message: "commentaire supprimé" });
     } else {
-      res.status(400).json({ message: "Vous n'avez pas les droits requis" });
+      res.status(400).json({ message: "" });
     }
   } catch (error) {
     return res.status(500).send({ error: "Erreur serveur" });

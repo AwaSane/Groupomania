@@ -1,18 +1,26 @@
 const db = require("../models");
 const bcrypt = require("bcrypt");
-const dotenv = require('dotenv').config();
-console.log(dotenv.parsed)
+const maskData = require("maskdata");
+
+
+const emailMaskOptions = {
+  maskWith: "*",
+  unmaskedStartCharactersBeforeAt: 1,
+  unmaskedEndCharactersAfterAt: 1,
+  maskAtTheRate: false,
+};
 // Fonction qui crée le compte admin dans la base de données à la connexion s'il n'existe pas
 function setAdmin(req, res) {
-  db.User.findOne({ where: { email: "admin@test.com" } || { pseudo: "admin" } })
+  db.User.findOne({ where: { email: maskData.maskEmail2 ("admin@test.com", emailMaskOptions) } || { pseudo: "admin" } })
+
     .then((user) => {
       if (!user) {
         bcrypt
-          .hash(process.env.DB_ADMIN, 10)
+          .hash("Groupomania", 10)
           .then((hash) => {
             const admin = db.User.create({
               pseudo: "admin",
-              email: "admin@test.com",
+              email: maskData.maskEmail2 ("admin@test.com", emailMaskOptions),
               password: hash,
               admin: true,
             })

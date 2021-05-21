@@ -65,10 +65,7 @@ export default new Vuex.Store({
       );
       state.message = "votre profil à bien été mis à jour";
     },
-    DELETE_PROFIL(state, id) {
-      state.users = [...state.users.filter((element) => element.id !== id)];
-      state.message = "votre compte a bien été supprimé";
-    },
+   
     LOG_OUT(state) {
       sessionStorage.clear();
       state.token = null;
@@ -76,6 +73,11 @@ export default new Vuex.Store({
       state.connected = false;
       state.message = "";
       state.error = "";
+    },
+
+    DELETE_PROFIL(state, id) {
+      state.users = [...state.users.filter((element) => element.id !== id)];
+      state.message = "compte supprimé";
     },
     SET_TOKEN(state, token) {
       state.token = token;
@@ -156,11 +158,13 @@ export default new Vuex.Store({
         commit("GET_USER_BY_ID", user);
       });
     },
+
     deleteProfil({ commit }, id) {
       Auth.deleteProfil(id).then(() => {       
           commit("DELETE_PROFIL", id);
-      })
+      })  
     },
+  
     updateProfil({ commit }, data) {
       let id = this.state.user.id;
       axios

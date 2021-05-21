@@ -5,6 +5,27 @@
         class="mx-auto my-12"
         max-width="800"
         >
+        <div class="delete-account">
+
+          
+              <v-tooltip v-if="!$store.state.user.admin === true" bottom>
+                <template v-slot:activator="{ on, attrs }">
+                  <v-btn
+                    @click="deleteProfil(user.id)"
+                    class="mx-2"
+                    fab
+                    x-small
+                    v-bind="attrs"
+                    v-on="on"
+                  >
+                    <v-icon small class=" rounded-circle ">
+                      $vuetify.icons.delete
+                    </v-icon>
+                  </v-btn>
+                </template>
+                <span>Supprimer le compte</span>
+              </v-tooltip>
+            </div>
         
             <v-btn to="/posts">
           <i class="fas fa-arrow-left"></i>
@@ -67,6 +88,15 @@
             </v-card-text>
           </div>
         </v-card>
+        <v-card v-else>
+      <v-card-title class="post-title-box">
+        <div class=" d-flex flex-column update-title pl-3 pb-5 ">
+          <span class="title font-weight-light post-title pb-5 "
+            >Votre compte a été supprimé</span
+          >
+        </div>
+      </v-card-title>
+    </v-card>
 </template>
 
 <script>
@@ -144,6 +174,14 @@ export default {
       this.options = false;
       this.showBio = true;
       this.username = true;
+    },
+    deleteProfil(id) {
+      this.$store.dispatch("deleteProfil", id);
+       this.$store.dispatch("getUserById", this.user.id);
+      this.$store.dispatch("logOut");
+      setTimeout(() => {
+        this.getBackHome();
+      }, 2000);
     },
 
   },

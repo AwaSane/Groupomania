@@ -7,9 +7,6 @@ export default {
   login(data) {
     return axios().post("users/login", data);
   },
-  deleteProfil(id) {
-    return axios().delete("users/profil/" + id);
-  },
 
   updateProfil(id, data) {
     return axios.put("users/profil/" + id, data);
@@ -19,5 +16,8 @@ export default {
   },
   getUserById(id) {
     return axios().get("users/profil/" + id);
+  },
+  deleteProfil(id) {
+    return axios().delete("users/profil/" + id);
   },
 };

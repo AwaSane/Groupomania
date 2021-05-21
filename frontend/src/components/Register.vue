@@ -28,7 +28,7 @@
           <div class="danger-alert message" v-html="message"></div>
 
           <div class="col-12">
-             <button  v-on:click.prevent="signup" class="btn btn-primary btn-color" type="submit">Submit form</button>
+             <button  v-on:click.prevent="signup" class="btn btn-primary btn-color" type="submit">S'inscrire</button>
          </div>
               </div>
             </form>
