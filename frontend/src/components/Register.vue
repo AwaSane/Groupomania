@@ -9,18 +9,18 @@
             <h1 class="display-6">S'inscrire</h1>
           </div>
               <div>
-              <label for="username"></label>
+              <label for="nom d'utilisateur"></label>
               <input 
                 v-model="pseudo" type="text" placeholder="nom d'utilisateur" class="signup">
               </div>
 
               <div>
-              <label for="inputEmail"></label>
+              <label for="email"></label>
               <input v-model="email" type="email" placeholder="email" class="signup" autocomplete="off">
               </div>
 
               <div>
-              <label for="password"></label>
+              <label for="mot de passe"></label>
               <input v-model="password" type="password" placeholder="mot de passe" class="signup">
               </div>
 
@@ -28,7 +28,9 @@
           <div class="danger-alert message" v-html="message"></div>
 
           <div class="col-12">
-             <button  v-on:click.prevent="signup" class="btn btn-primary btn-color" type="submit">S'inscrire</button>
+             <v-btn color="pink darken-4"
+          dark 
+          v-on:click.prevent="signup" class="btn btn-primary btn-color" type="submit">S'inscrire</v-btn>
          </div>
               </div>
             </form>
@@ -87,8 +89,8 @@ export default {
   padding: 10px;
 }
 .btn-color{
-  background-color: rosybrown;
-  border: rosybrown;
+  background-color:#c68286;
+  border: #c68286;
 }
 
 .container {

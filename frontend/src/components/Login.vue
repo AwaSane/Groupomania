@@ -27,7 +27,8 @@
             <div class="col-12">
               
 
-            <button class="btn btn-primary btn-color" v-on:click.prevent="login">Se connecter</button>
+            <v-btn type="submit" color="pink darken-4"
+          dark class="btn btn-primary btn-color" v-on:click.prevent="login">Se connecter</v-btn>
             </div>
               
               </div>
@@ -87,10 +88,6 @@ export default {
  padding: 8px;
 }
 
-.btn-color{
-  background-color: rosybrown;
-  border: rosybrown;
-}
 
 .container {
   display: flex;

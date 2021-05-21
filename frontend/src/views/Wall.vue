@@ -26,7 +26,8 @@
         >
           <div>
             <div class="filebtn">
-              <v-btn @click="addFile" small>
+              <v-btn type="Fichier à télécharger"
+               @click="addFile" small>
                 Fichier
               </v-btn>
             </div>
@@ -50,7 +51,7 @@
           </div>
         </div>
         <div class="formfile">
-          <v-btn @click="onSubmit" :disabled="!sent">Poster</v-btn>
+          <v-btn type="poster" @click="onSubmit" :disabled="!sent">Poster</v-btn>
         </div>
       </v-form>
       <div>

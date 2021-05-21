@@ -7,7 +7,8 @@
             alt="Logo"
             to="/"
             :src="require('../assets/icon-left-font-monochrome-black.svg')"
-            width="200"/>
+            width="200"
+            title="Logo de l'entreprise"/>
         </router-link>
 
         <router-link to="/" v-if="isConnected === false">
@@ -31,6 +32,7 @@
     <v-menu offset-y >
       <template v-slot:activator="{ on, attrs }">
         <v-btn
+        type="Menu"
           color="pink darken-4"
           dark
           v-bind="attrs"

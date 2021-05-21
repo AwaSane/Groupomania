@@ -108,6 +108,7 @@
                   >
                   </v-text-field>
                   <v-btn
+                  type="submit"
                     @click="onSubmitComment(post.id)"
                     :disabled="!isValid"
                     >Poster</v-btn
@@ -141,7 +142,9 @@
                       "
                       v-slot:activator="{ on, attrs }"
                     >
-                      <v-btn small v-bind="attrs" v-on="on">
+                      <v-btn 
+                      type="submit"
+                      small v-bind="attrs" v-on="on">
                         <i class="fas fa-trash"
                          @click="deleteComment(comment.id)">                    
                         </i>

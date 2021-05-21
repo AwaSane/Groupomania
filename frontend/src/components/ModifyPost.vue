@@ -51,7 +51,7 @@
         </div>
         
         <div v-if="withImage" class="pb-5 pt-5 d-flex justify-center">
-          <label for="image" class="pr-3">Image</label>
+          <label for="image à telecharger" class="pr-3">Image</label>
           <input
             @change="uploadImage"
             type="file"
@@ -76,7 +76,7 @@
           </div>
         </v-card-text>
         <div class=" d-flex justify-center  ">
-          <v-btn @click="onSubmit" :disabled="!isValid" class="mb-3"
+          <v-btn type="submit" @click="onSubmit" :disabled="!isValid" class="mb-3"
             >Poster</v-btn
           >
         </div>

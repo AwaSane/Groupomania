@@ -1,5 +1,5 @@
 <template>
-    <div class="set">
+    <div class="set d-flex">
       <div class="intro">
       <p class="title">Bienvenue sur le nouveau réseau social d’entreprise </p>
       <p class="txt">Ce réseau social est un outil de communication qui relie 
@@ -33,6 +33,7 @@ export default {
     font-weight: 400;
     font-size: 40px;
     width: 94%;
+    text-align: justify;
 }
 .image{
     width: 55%;
@@ -41,12 +42,13 @@ export default {
     margin-left: 10%;
 }
 .set{
-    display: flex;
+    
     margin: 2%;
 }
 .txt{
-    color: rgba(0, 0, 0, 0.63);
+    color: #3f3f3f;
     font-size: 16px;
+    text-align: justify;
 }
 
 </style>

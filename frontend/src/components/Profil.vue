@@ -5,28 +5,6 @@
         class="mx-auto my-12"
         max-width="800"
         >
-        <div class="delete-account">
-
-          
-              <v-tooltip v-if="!$store.state.user.admin === true" bottom>
-                <template v-slot:activator="{ on, attrs }">
-                  <v-btn
-                    @click="deleteProfil(user.id)"
-                    class="mx-2"
-                    fab
-                    x-small
-                    v-bind="attrs"
-                    v-on="on"
-                  >
-                    <v-icon small class=" rounded-circle ">
-                      $vuetify.icons.delete
-                    </v-icon>
-                  </v-btn>
-                </template>
-                <span>Supprimer le compte</span>
-              </v-tooltip>
-            </div>
-        
             <v-btn to="/posts">
           <i class="fas fa-arrow-left"></i>
             </v-btn>
@@ -37,7 +15,7 @@
             <div
               v-if="username"
             >
-            <h6>Nom d'utilisateur:</h6>
+            <p class="grass">Nom d'utilisateur:</p>
             <div class="setmodification">
               <p> {{ user.pseudo }} </p>
               <v-btn @click="modify" x-small>
@@ -58,7 +36,7 @@
           <v-divider class="mx-4"></v-divider>
 
           <v-card-text v-if="showBio">
-              <h6>Bio:</h6>
+              <p class="grass">Bio:</p>
               <div class="setmodification">
                 <p v-if="!user.bio"> A propos de moi...</p>
                 <p>{{ user.bio }}</p>
@@ -81,12 +59,32 @@
 
 
               <div class="d-flex justify-center">
-                <v-btn @click="onSubmit(user.id)" :disabled="!isValid"
+                <v-btn type="submit" @click="onSubmit(user.id)" :disabled="!isValid"
                   >Envoyer</v-btn
                 >
               </div>
             </v-card-text>
           </div>
+           <div class="delete-account">
+              <v-tooltip v-if="!$store.state.user.admin === true" bottom>
+                <template v-slot:activator="{ on, attrs }">
+                  <v-btn
+                  type="submit"
+                    @click="deleteProfil(user.id)"
+                    class="mx-2"
+                    medium
+                    v-bind="attrs"
+                    v-on="on"
+                  >
+                   <i class="fas fa-user-times"></i>
+                  </v-btn>
+                  <div class="text-delete">
+                  <p >Supprimer mon compte
+                  (Attention cette action est definitive)</p>
+                  </div>
+                </template>
+              </v-tooltip>
+            </div>
         </v-card>
         <v-card v-else>
       <v-card-title class="post-title-box">
@@ -221,5 +219,20 @@ export default {
 }
 .msg{
   display: block;
+}
+
+.text-delete{
+  font-size: 15px;
+  color: red;
+  
+}
+
+.delete-account{
+  display: flex;
+  padding-bottom: 15px;
+  align-items: center;
+}
+.grass{
+  font-weight: bold;
 }
 </style>
