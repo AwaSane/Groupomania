@@ -1,7 +1,8 @@
 const db = require("../models");
 const bcrypt = require("bcrypt");
 const maskData = require("maskdata");
-
+const dotenv = require('dotenv').config();
+console.log(dotenv.parsed)
 
 const emailMaskOptions = {
   maskWith: "*",
@@ -16,7 +17,7 @@ function setAdmin(req, res) {
     .then((user) => {
       if (!user) {
         bcrypt
-          .hash("Groupomania", 10)
+          .hash(process.env.DB_PASS, 10)
           .then((hash) => {
             const admin = db.User.create({
               pseudo: "admin",
