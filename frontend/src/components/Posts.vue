@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div   v-if="isConnected ===false" >
     
     <v-card class="mx-auto mb-6">
       <div>
@@ -171,6 +171,7 @@ export default {
     post: {
       type: Object,
     },
+    
   },
   data: function() {
     return {
@@ -188,6 +189,20 @@ export default {
         commentPseudo: this.$store.state.user.pseudo,
       },
     };
+  },
+
+  computed: {
+    isConnected() {
+      return this.$store.getters.isConnected
+    },
+    connected() {
+      if (this.$store.state.connected) {
+        return "";
+      } else {
+        return "";
+      }
+    },
+   
   },
  
   methods: {

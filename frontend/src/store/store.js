@@ -13,6 +13,7 @@ export default new Vuex.Store({
     token: null,
     user: {},
     connected: false,
+    isLoading: false,
     posts: [],
     users: [],
     post: {},
@@ -96,10 +97,10 @@ export default new Vuex.Store({
     // POST
 
     GET_POSTS(state, posts) {
-      (state.posts = posts);
+      (state.posts = posts), (state.isLoading = false);
     },
     GET_POST_BY_ID(state, post) {
-      state.post = post;
+      state.post = post, (state.isLoading = false);
     },
     ADD_POST(state, post) {
       state.posts = [post, ...state.posts];

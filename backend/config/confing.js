@@ -3,6 +3,6 @@ console.log(dotenv.parsed)
 
 module.exports = {
     authentication: {
-      jwtSecret: process.env.JWT_SECRET || process.env.JWT_KEY,
+      jwtSecret: process.env.JWT_SECRET || 'RANDOM_TOKEN_SECRET',
     },
   };
