@@ -1,5 +1,5 @@
 <template>
-  <div   v-if="isConnected ===false" >
+  <div>
     
     <v-card class="mx-auto mb-6">
       <div>
@@ -191,19 +191,7 @@ export default {
     };
   },
 
-  computed: {
-    isConnected() {
-      return this.$store.getters.isConnected
-    },
-    connected() {
-      if (this.$store.state.connected) {
-        return "";
-      } else {
-        return "";
-      }
-    },
-   
-  },
+  
  
   methods: {
 refresh() {
