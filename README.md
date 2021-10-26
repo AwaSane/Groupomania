@@ -37,3 +37,19 @@ Make sure you have MySQL  installed globally
 In your terminal, Connect to mysql with -u mentor -p GroupomaniaP7
 
 
+-------------------------------------------------------------- DEMO ----------------------------------------------------------
+
+
+https://user-images.githubusercontent.com/71699024/138872993-f8c75517-3df2-445e-b635-5257cd3b6384.mp4
+
+
+
+https://user-images.githubusercontent.com/71699024/138873024-b71a3781-9024-4ca0-85a9-ea7d7bff7815.mp4
+
+
+
+https://user-images.githubusercontent.com/71699024/138873046-3ee0a6c7-2178-4c77-a8e0-4ac3f24f85d0.mp4
+
+
+
+https://user-images.githubusercontent.com/71699024/138873060-df9a8d56-e820-4a77-9e2e-98f560889fdb.mp4
